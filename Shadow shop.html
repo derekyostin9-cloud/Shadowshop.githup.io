@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHADOW SHOP - Recargas de Juegos</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',Arial,sans-serif}
+body{background:#05050c;color:#fff;padding-bottom:90px;background-image:radial-gradient(600px 300px at 50% -50px,rgba(168,85,247,.35),transparent),radial-gradient(500px 250px at 90% 10%,rgba(219,39,119,.18),transparent)}
+.top{background:linear-gradient(90deg,#4c1d95,#db2777,#4c1d95);background-size:200% 100%;animation:brillo 4s linear infinite;text-align:center;padding:10px;font-size:12px;font-weight:800;letter-spacing:.5px}
+@keyframes brillo{to{background-position:200% 0}}
+header{max-width:1100px;margin:0 auto;padding:16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50;background:rgba(5,5,12,.85);backdrop-filter:blur(12px);border-bottom:1px solid #262640}
+.logo{font-size:23px;font-weight:900;letter-spacing:-.5px;text-shadow:0 0 20px rgba(168,85,247,.8)}.logo span{color:#a855f7}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.hero{background:linear-gradient(135deg,#1a0a2e,#2a0a3a,#0f0f25);border:1px solid #4c1d95;border-radius:26px;padding:28px 20px;text-align:center;box-shadow:0 20px 60px rgba(139,92,246,.25);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(300px 150px at 50% 0,rgba(255,255,255,.15),transparent);pointer-events:none}
+.hero h1{font-size:36px;line-height:1.1;font-weight:900;position:relative}
+.hero h1 span{background:linear-gradient(90deg,#c084fc,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#d1d5db;margin-top:10px;font-size:14px;position:relative}
+.juegos{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px;position:relative}
+.juegos button{padding:13px 20px;border-radius:99px;border:1px solid #3f3f5a;background:rgba(30,30,50,.9);color:#fff;cursor:pointer;font-weight:800;font-size:14px;transition:.2s}
+.juegos button:hover{transform:translateY(-2px);border-color:#a855f7}
+.juegos button.active{background:#fff;color:#111;box-shadow:0 8px 25px rgba(255,255,255,.25)}
+.trust{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px;position:relative}
+.trust span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:7px 12px;border-radius:99px;font-size:12px;font-weight:600}
+.grid{display:grid;grid-template-columns:1fr 390px;gap:18px;margin-top:18px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.hero h1{font-size:29px}}
+.card{background:linear-gradient(180deg,#141422,#0f0f1e);border:1px solid #2a2a45;border-radius:22px;padding:18px;box-shadow:0 15px 40px rgba(0,0,0,.35)}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+@media(max-width:600px){.products{grid-template-columns:repeat(2,1fr)}}
+.prod{border:1px solid #333;background:#17172a;border-radius:18px;padding:16px;cursor:pointer;text-align:center;transition:.2s;position:relative}
+.prod:hover{transform:translateY(-3px);border-color:#a855f7;box-shadow:0 10px 30px rgba(168,85,247,.25)}
+.prod.sel{border:2px solid #22c55e;background:#0f2417;box-shadow:0 0 0 3px rgba(34,197,94,.2)}
+.prod h4{font-size:15px;margin:9px 0 3px}.prod p{font-size:12px;color:#a1a1aa}.prod b{font-size:17px}
+.badge{font-size:10px;background:linear-gradient(90deg,#facc15,#f97316);color:#111;padding:5px 9px;border-radius:99px;font-weight:900}
+label{font-weight:800;font-size:13px;display:block;margin-top:15px}
+input{width:100%;padding:14px;border-radius:13px;border:1px solid #333;background:#1e1e32;color:#fff;font-size:15px;margin-top:7px;outline:none}
+input:focus{border-color:#a855f7;box-shadow:0 0 0 3px rgba(168,85,247,.25)}
+.btn{width:100%;background:linear-gradient(90deg,#8b5cf6,#db2777);color:#fff;border:none;padding:15px;border-radius:13px;font-weight:900;cursor:pointer;font-size:15px;margin-top:11px;box-shadow:0 10px 25px rgba(139,92,246,.35);transition:.2s}
+.btn:active{transform:scale(.98)}
+.btn-green{background:linear-gradient(90deg,#16a34a,#22c55e);box-shadow:0 10px 25px rgba(34,197,94,.35);font-size:16px}
+.btn-dark{background:#fff;color:#111;box-shadow:none}
+.btn-ghost{background:transparent;border:1px solid #333;color:#fff;box-shadow:none}
+.pay{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px}
+.pay button{padding:13px;border-radius:13px;border:1px solid #333;background:#1e1e32;color:#fff;cursor:pointer;font-weight:800;transition:.2s}
+.pay button.active{background:#fff;color:#111;transform:scale(1.02)}
+.pago-box{background:linear-gradient(180deg,#221038,#160a2a);border:1px dashed #a855f7;padding:13px;border-radius:14px;margin-top:10px;font-size:13px;line-height:1.6}
+.total{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:13px;border-top:1px dashed #333}.total b{font-size:24px;color:#4ade80}
+.hidden{display:none}
+.wa{position:fixed;right:16px;bottom:16px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:29px;box-shadow:0 10px 30px rgba(37,211,102,.5);z-index:60;text-decoration:none}
+.toast{position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#22c55e;color:#fff;padding:11px 18px;border-radius:99px;font-weight:800;z-index:99;display:none;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.seguro{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.seguro span{font-size:11px;color:#a1a1aa;background:#1e1e32;padding:6px 10px;border-radius:99px}
+</style>
+</head>
+<body>
+<div id="toast" class="toast"></div>
+<div class="top">⚡ SHADOW SHOP • RECARGAS EN 5-15 MIN • CUP / SALDO / USDT • 100% SEGURO</div>
+<header><div class="logo">💀 SHADOW <span>SHOP</span></div><button class="btn" style="width:auto;margin:0;padding:11px 18px" onclick="abrirWhats()">💬 Ayuda</button></header>
+
+<div class="wrap">
+  <div class="hero">
+    <div style="display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:6px 12px;border-radius:99px;font-size:12px;font-weight:700">🔥 LA TIENDA #1 DE RECARGAS EN CUBA</div>
+    <h1 style="margin-top:12px">Recarga tu juego <span>en 1 minuto.</span></h1>
+    <p>Elige tu juego, tu paquete, paga con CUP, Saldo o USDT y sube tu comprobante.</p>
+    <div class="juegos">
+      <button class="active" onclick="cambiarJuego('freefire',this)">🔥 Free Fire</button>
+      <button onclick="cambiarJuego('bloodstrike',this)">💥 Blood Strike</button>
+      <button onclick="cambiarJuego('mlbb',this)">⚔️ Mobile Legends</button>
+    </div>
+    <div class="trust"><span>⚡ Entrega 5-15 min</span></div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2 id="tituloJuego">🔥 1. Elige tu recarga - Free Fire</h2>
+      <p style="font-size:13px;color:#a1a1aa;margin-top:6px">Toca un paquete para seleccionarlo 👇</p>
+      <div id="lista" class="products"></div>
+      <h3 style="margin-top:20px">❓ ¿Cómo funciona?</h3>
+      <p style="font-size:13px;color:#a1a1aa;margin-top:8px;line-height:1.8"><b style="color:#fff">1.</b> Elige tu juego y paquete<br><b style="color:#fff">2.</b> Pon tu ID del juego<br><b style="color:#fff">3.</b> Paga con CUP, Saldo o USDT<br><b style="color:#fff">4.</b> Sube tu comprobante y te recargamos</p>
+      <div class="seguro"><span>🛡️ Pago verificado</span><span>📸 Comprobante obligatorio</span><span>💬 Soporte por WhatsApp</span></div>
+    </div>
+
+    <div class="card" style="border-color:#4c1d95">
+      <h2>🛒 2. Tu Recarga</h2>
+      <label>🆔 Tu ID del juego</label>
+      <input id="playerId" placeholder="Ej: 1234567890">
+      <p style="font-size:12px;color:#888;margin-top:6px" id="ayudaId">Free Fire: Entra al juego > Toca tu avatar > Tu ID está debajo de tu nombre.</p>
+      <label>💬 Tu WhatsApp <span style="color:#888;font-weight:normal">(para avisarte)</span></label>
+      <input id="whatsCliente" placeholder="Ej: 5350000000">
+      <label>📦 Tu paquete</label>
+      <div id="pedidoActual" style="background:#1e1e32;border:1px dashed #444;padding:12px;border-radius:12px;font-size:14px;margin-top:6px">Elige un paquete 👈</div>
+      <label>💰 Método de pago</label>
+      <div class="pay" id="listaPagos"></div>
+      <div class="pago-box"><b>Paga aquí:</b><br><span id="textoPago"></span><br><button class="btn btn-dark" onclick="copiarDato()">📋 Copiar datos de pago</button></div>
+      <label>📸 Sube tu comprobante</label>
+      <input type="file" id="comprobanteInput" accept="image/*" onchange="previsualizar(event)">
+      <img id="previewImg" style="width:100%;border-radius:12px;margin-top:8px;display:none">
+      <div class="total"><span>Total a pagar</span><b id="totalPagar">-</b></div>
+      <button class="btn btn-green" onclick="confirmar()">✅ Confirmar Recarga →</button>
+      <button class="btn btn-ghost" onclick="abrirWhats()">💬 Ayuda por WhatsApp</button>
+      <div id="resumen" class="hidden" style="margin-top:12px"></div>
+      <p style="font-size:11px;color:#888;text-align:center;margin-top:10px">Shadow Shop</p>
+    </div>
+  </div>
+</div>
+<a class="wa" href="#" onclick="abrirWhats();return false">💬</a>
+
+<script>
+const MI_WHATSAPP="+5358080234";
+const DATOS_PAGO={
+"Saldo":"Saldo Móvil: +5358080234 - Shadow Shop",
+"CUP":"Tarjeta CUP: 9238129971775798 Numero a confirmar 58080234- Shadow Shop",
+"USDT":"USDT BEP20: 0x389F24959A590de3119870230229A957Fb218914 - Red BEP20"
+};
+const METODOS=["Saldo","CUP","USDT"];
+const productos={
+freefire:[
+{n:"110 Diamantes",saldo:290,cup:900,usdt:1,pop:false,desc:"Para empezar"},
+{n:"220 Diamantes",saldo:580,cup:1800,usdt:2,pop:false,desc:"Recarga rápida"},
+{n:"341 Diamantes",saldo:870,cup:2700,usdt:3,pop:true,desc:"🔥 Más vendido"},
+{n:"440 Diamantes",saldo:1160,cup:3600,usdt:4,pop:false,desc:"Para eventos"},
+{n:"572 Diamantes",saldo:1450,cup:4500,usdt:5,pop:false,desc:"Buen precio"},
+{n:"1166 Diamantes",saldo:2900,cup:9000,usdt:10,pop:true,desc:"💎 Mejor valor"},
+{n:"2398 Diamantes",saldo:5800,cup:18000,usdt:20,pop:false,desc:"Pack grande"},
+{n:"Pase Booyah",saldo:950,cup:4700,usdt:5,pop:true,desc:"Temporada actual"},
+{n:"Membresía Semanal",saldo:780,cup:3000,usdt:3,pop:false,desc:"60 💎 x día • 7 días"},
+{n:"Membresía Mensual",saldo:3300,cup:14500,usdt:14,pop:true,desc:"60 💎 x día • 30 días"},
+{n:"Evo Pass Mensual",saldo:3700,cup:8000,usdt:9,pop:false,desc:"30 días"},
+],
+bloodstrike:[
+{n:"105 Oro",saldo:350,cup:900,usdt:1.8,pop:false,desc:"Blood Strike"},
+{n:"320 Oro",saldo:950,cup:2900,usdt:3.5,pop:false,desc:"Blood Strike"},
+{n:"540 Oro",saldo:1500,cup:4900,usdt:5.7,pop:true,desc:"🔥 Más vendido"},
+{n:"1100 Oro",saldo:3200,cup:10000,usdt:10,pop:false,desc:"Blood Strike"},
+{n:"2260 Oro",saldo:6100,cup:20000,usdt:20,pop:false,desc:"Blood Strike"},
+{n:"5800 Oro",saldo:15000,cup:50200,usdt:47,pop:true,desc:"💎 Mejor valor"},
+{n:"Pase Elite",saldo:1200,cup:4500,usdt:5,pop:true,desc:"Pase Elite"},
+{n:"Pase Elite Prime",saldo:3200,cup:9000,usdt:10,pop:false,desc:"Pase Elite Prime"},
+{n:"Level Up Pass",saldo:600,cup:2200,usdt:2.5,pop:false,desc:"Level Up"},
+{n:"Semana Bolsa de la Suerte",saldo:360,cup:1500,usdt:1.5,pop:false,desc:"Bolsa de la Suerte • 7 días"},
+],
+mlbb:[
+{n:"50+5 Diamantes",saldo:250,cup:1100,usdt:1.5,pop:false,desc:"Mobile Legends"},
+{n:"156+16 Diamantes",saldo:780,cup:3200,usdt:3.5,pop:false,desc:"Mobile Legends"},
+{n:"250+25 Diamantes",saldo:1350,cup:5600,usdt:5.3,pop:true,desc:"🔥 Más vendido"},
+{n:"500+65 Diamantes",saldo:2560,cup:10000,usdt:9.6,pop:false,desc:"Mobile Legends"},
+{n:"625+81 Diamantes",saldo:3060,cup:15000,usdt:13.6,pop:false,desc:"Mobile Legends"},
+{n:"1860+335 Diamantes",saldo:8900,cup:40000,usdt:40,pop:true,desc:"💎 Mejor valor"},
+{n:"3099+589 Diamantes",saldo:15500,cup:60200,usdt:58,pop:false,desc:"Pack grande"},
+{n:"Weekly Elite Pack",saldo:260,cup:1400,usdt:1.6,pop:false,desc:"Pack semanal"},
+{n:"Weekly Pass",saldo:520,cup:2600,usdt:2.7,pop:false,desc:"Pase semanal"},
+{n:"Monthly Elite Pack",saldo:1500,cup:5500,usdt:5.7,pop:false,desc:"Pack mensual"},
+{n:"Twilight Pass",saldo:2800,cup:10400,usdt:9.9,pop:true,desc:"Twilight Pass"},
+]
+};
+let juegoActual='freefire',seleccionado=null,metodo='Saldo',comprobanteBase64="";
+const ayudas={freefire:"Free Fire: Entra al juego > Toca tu avatar > Tu ID está debajo de tu nombre.",bloodstrike:"Blood Strike: Entra al juego > Perfil > Tu UID está arriba.",mlbb:"Mobile Legends: Entra al juego > Perfil > Tu ID está debajo de tu nombre (Ej: 12345678)."};
+const titulos={freefire:"🔥 1. Elige tu recarga - Free Fire",bloodstrike:"💥 1. Elige tu recarga - Blood Strike",mlbb:"⚔️ 1. Elige tu recarga - Mobile Legends"};
+function precioPara(p,met){if(met==='Saldo')return p.saldo+" Saldo";if(met==='CUP')return p.cup+" CUP";return p.usdt+" USDT";}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2500);}
+function cambiarJuego(j,btn){juegoActual=j;seleccionado=null;document.querySelectorAll('.juegos button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('tituloJuego').textContent=titulos[j];document.getElementById('ayudaId').textContent=ayudas[j];document.getElementById('pedidoActual').textContent='Elige un paquete 👈';document.getElementById('totalPagar').textContent='-';render();}
+function render(){let lista=productos[juegoActual];document.getElementById('lista').innerHTML=lista.map(p=>{const idx=lista.indexOf(p);const esSel=seleccionado&&seleccionado.n===p.n&&seleccionado.juego===juegoActual;return `<div class="prod ${esSel?'sel':''}" onclick="seleccionar(${idx})"><div style="font-size:28px">${juegoActual==='freefire'?'💎':juegoActual==='bloodstrike'?'💥':'⚔️'}</div>${p.pop?'<span class="badge">MÁS VENDIDO</span><br>':''}<h4>${p.n}</h4><p>${p.desc}</p><b>${precioPara(p,metodo)}</b><br><button class="btn ${esSel?'btn-green':''}" style="padding:10px">${esSel?'✅ Seleccionado':'Seleccionar'}</button></div>`}).join('');}
+function renderPagos(){document.getElementById('listaPagos').innerHTML=METODOS.map(m=>`<button class="${m===metodo?'active':''}" onclick="elegirPago('${m}',this)">${m==='Saldo'?'💰 ':m==='CUP'?'💳 ':m==='USDT'?'🪙 ':''}${m}</button>`).join('');}
+function seleccionar(i){seleccionado={...productos[juegoActual][i],juego:juegoActual};let precio=precioPara(seleccionado,metodo);document.getElementById('pedidoActual').innerHTML=`<b>${seleccionado.n}</b><br>${precio} con ${metodo}`;document.getElementById('totalPagar').textContent=precio;render();toast('✅ '+seleccionado.n);}
+function elegirPago(m,btn){metodo=m;renderPagos();actualizarDatosPago();if(seleccionado)seleccionar(productos[juegoActual].findIndex(p=>p.n===seleccionado.n));else render();}
+function actualizarDatosPago(){document.getElementById('textoPago').textContent=DATOS_PAGO[metodo];}
+function copiarDato(){navigator.clipboard.writeText(DATOS_PAGO[metodo]).then(()=>toast('📋 Copiado')).catch(()=>prompt('Copia:',DATOS_PAGO[metodo]));}
+function previsualizar(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=function(ev){comprobanteBase64=ev.target.result;const img=document.getElementById('previewImg');img.src=comprobanteBase64;img.style.display='block';toast('📸 Foto cargada');};r.readAsDataURL(f);}
+function confirmar(){const id=document.getElementById('playerId').value.trim();const whats=document.getElementById('whatsCliente').value.trim();if(!seleccionado){alert('Elige un paquete');return;}if(!id){alert('Pon tu ID');return;}if(!whats){alert('Pon tu WhatsApp');return;}if(!comprobanteBase64){alert('📸 Sube tu comprobante');return;}let precio=document.getElementById('totalPagar').textContent;document.getElementById('resumen').classList.remove('hidden');document.getElementById('resumen').innerHTML=`<div style="background:#12281a;border:1px solid #22c55e;padding:12px;border-radius:12px"><b>✅ ¡Pedido enviado!</b><br>${seleccionado.n} - ${precio} con ${metodo}<br>Juego: ${juegoActual} - ID: ${id}<br>Te avisamos al WhatsApp ${whats}</div>`;toast('✅ Pedido enviado');window.open(`https://wa.me/${MI_WHATSAPP}?text=${encodeURIComponent(`Hola Shadow Shop, quiero recargar ${seleccionado.n} - ${precio} con ${metodo} - Juego: ${juegoActual} - ID: ${id} - Mi WhatsApp: ${whats}`)}`,'_blank');}
+function abrirWhats(){window.open(`https://wa.me/${MI_WHATSAPP}?text=Hola Shadow Shop, quiero recargar`,'_blank');}
+renderPagos();render();actualizarDatosPago();
+</script>
+</body>
+</html>
